@@ -7,6 +7,8 @@ from langchain.prompts import ChatPromptTemplate
 
 CHROMA_PATH = "chroma"
 
+
+
 PROMPT_TEMPLATE = """
 Answer the question based only on the following context:
 
@@ -34,6 +36,7 @@ def main():
     if len(results) == 0 or results[0][1] < 0.7:
         print(f"Unable to find matching results.")
         return
+
 
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
